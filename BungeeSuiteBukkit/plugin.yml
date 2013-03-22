@@ -1,0 +1,24 @@
+name: BungeeSuite
+main : com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit
+version: 0.7
+softdepend: [Vault]
+permissions:
+    BungeeSuite.*:
+        description: Gives access to all chat commands
+        children:
+            BungeeSuite.CreateSigns: true
+            BungeeSuite.User: true
+            BungeeSuite.Admin: true
+    BungeeSuite.User:
+        description: Allows you basic chat commands
+        children:
+            SIS.CreateSigns: false
+        default: true
+    BungeeSuite.Admin:
+        description: Allows you to set up BungeeSuite
+        children:
+            BungeeSuite.CreateSigns: true
+        default: op
+    BungeeSuite.CreateSigns:
+        description: Allows you to create signs
+        default: op
