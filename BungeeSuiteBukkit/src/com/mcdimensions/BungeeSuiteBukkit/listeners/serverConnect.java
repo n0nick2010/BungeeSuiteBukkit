@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit;
+package com.mcdimensions.BungeeSuiteBukkit.listeners;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -10,6 +10,9 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitTask;
+
+import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.BungeeSuiteBukkit.Utilities.PluginMessageTask;
 
 public class serverConnect implements Listener {
 	BungeeSuiteBukkit plugin;

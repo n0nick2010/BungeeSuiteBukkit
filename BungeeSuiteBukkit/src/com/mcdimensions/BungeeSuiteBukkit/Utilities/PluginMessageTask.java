@@ -1,10 +1,12 @@
-package com.mcdimensions.BungeeSuiteBukkit;
+package com.mcdimensions.BungeeSuiteBukkit.Utilities;
 
 import java.io.ByteArrayOutputStream;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 
 public class PluginMessageTask extends BukkitRunnable {
     

@@ -11,7 +11,7 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.scheduler.BukkitTask;
 
 import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.PluginMessageTask;
+import com.mcdimensions.BungeeSuiteBukkit.Utilities.PluginMessageTask;
 
 public class VaultListener implements Listener {
 	BungeeSuiteBukkit plugin;

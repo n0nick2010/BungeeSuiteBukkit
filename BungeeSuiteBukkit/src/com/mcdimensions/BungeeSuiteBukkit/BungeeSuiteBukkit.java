@@ -31,6 +31,7 @@ import com.mcdimensions.BungeeSuiteBukkit.listeners.PortalListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.ShutDownListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.SignListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.VaultListener;
+import com.mcdimensions.BungeeSuiteBukkit.listeners.serverConnect;
 import com.mcdimensions.BungeeSuiteBukkit.signs.BungeeSign;
 import com.mcdimensions.BungeeSuiteBukkit.signs.MOTDUpdater;
 import com.mcdimensions.BungeeSuiteBukkit.signs.ServerInfo;
