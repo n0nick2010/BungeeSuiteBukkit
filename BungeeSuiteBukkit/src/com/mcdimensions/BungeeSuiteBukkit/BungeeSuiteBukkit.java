@@ -28,7 +28,6 @@ import com.mcdimensions.BungeeSuiteBukkit.Utilities.SQL;
 import com.mcdimensions.BungeeSuiteBukkit.Utilities.Utilities;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.PluginMessengerListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.PortalListener;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.ShutDownListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.SignListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.VaultListener;
 import com.mcdimensions.BungeeSuiteBukkit.listeners.serverConnect;
