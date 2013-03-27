@@ -41,7 +41,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	String username, password, database, port, url;
 	public String motd, OnDisableTarget;
 	public Boolean dynamicMOTD, showPlayers, usingSigns, usingPortals,
-			usingWarps, usingVault, groupFixes;
+			usingWarps, usingVault;
 	public SQL sql;
 	
 	public ConsoleCommandSender log;
@@ -183,8 +183,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		this.usingPortals = config.getBoolean("Portals.Enabled");
 		this.OnDisableTarget = config.getString("Warps.OnDisableTarget");
 		this.usingVault = config.getBoolean("Chat.SendVaultInfo");
-		this.groupFixes = config.getBoolean("UseGroupPrefixesAndSuffixes");
-	}
+		}
 
 	public Collection<Portal> getPortals() {
 		return portals.values();
