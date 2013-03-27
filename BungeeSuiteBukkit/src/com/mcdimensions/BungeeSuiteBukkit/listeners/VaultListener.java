@@ -23,8 +23,8 @@ public class VaultListener implements Listener {
 	@EventHandler
 	public void login(PlayerJoinEvent event) {
 		Player player = event.getPlayer();
-		String prefix = "";
-		String suffix = "";
+		String prefix = null;
+		String suffix = null;
 		if (plugin.groupFixes) {
 			String group = plugin.chat.getPrimaryGroup(player);
 			prefix = plugin.chat.getGroupPrefix(player.getWorld(), group);
@@ -32,6 +32,12 @@ public class VaultListener implements Listener {
 		} else {
 			prefix = plugin.chat.getPlayerPrefix(player);
 			suffix = plugin.chat.getPlayerSuffix(player);
+		}
+		if(prefix==null){
+			prefix="";
+		}
+		if(suffix==null){
+			suffix="";
 		}
 		ByteArrayOutputStream b = new ByteArrayOutputStream();
 		DataOutputStream out = new DataOutputStream(b);
@@ -59,7 +65,7 @@ public class VaultListener implements Listener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BukkitTask task = new PluginMessageTask(this.plugin, event.getPlayer(), b).runTaskLater(this.plugin, 1);
+		BukkitTask task = new PluginMessageTask(this.plugin, event.getPlayer(), b).runTaskLater(this.plugin, 5);
 	}
 
 }
