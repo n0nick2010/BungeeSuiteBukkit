@@ -7,15 +7,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.World;
-import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
@@ -502,18 +498,6 @@ public class Utilities {
 				list.put(server, signs);
 			}
 
-		sql.closeConnection();
-		return list;
-	}
-
-	private HashSet<String> getSignTypes() throws SQLException {
-		HashSet<String> list = new HashSet<String>();
-		sql.initialise();
-		ResultSet res = sql.sqlQuery("SELECT Type FROM BungeeSignType");
-		while(res.next()){
-			list.add(res.getString("Type"));
-		}
-		res.close();
 		sql.closeConnection();
 		return list;
 	}

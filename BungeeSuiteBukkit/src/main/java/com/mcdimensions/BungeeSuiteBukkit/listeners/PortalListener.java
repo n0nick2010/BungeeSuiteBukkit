@@ -2,7 +2,6 @@ package com.mcdimensions.BungeeSuiteBukkit.listeners;
 
 import java.io.IOException;
 
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -14,8 +13,6 @@ import org.bukkit.event.player.PlayerMoveEvent;
 import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 import com.mcdimensions.BungeeSuiteBukkit.Portals.Portal;
 import com.mcdimensions.BungeeSuiteBukkit.Utilities.Utilities;
-
-
 
 public class PortalListener implements Listener {
 

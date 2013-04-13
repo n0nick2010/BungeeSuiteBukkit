@@ -1,8 +1,5 @@
 package com.mcdimensions.BungeeSuiteBukkit;
 
-import java.io.ByteArrayOutputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -13,14 +10,10 @@ import net.milkbowl.vault.chat.Chat;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.block.Sign;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitTask;
 
 import com.mcdimensions.BungeeSuiteBukkit.Portals.Portal;
 import com.mcdimensions.BungeeSuiteBukkit.Portals.RegionSelectionManager;
@@ -55,7 +48,8 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	public SignHandler SignHandler;
 	private long signUpdatePeriod =200L;
 	private long MOTDUpdatePeriod = 200L;
-	 public static Chat chat = null;
+	// TODO: Fix Public variable
+	 public static Chat CHAT = null;
     //
 	@Override
 	public void onEnable() {
@@ -84,7 +78,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		}
 		if(usingSigns){
 		try {
-			BukkitTask task = new SignHandler(this).runTaskTimer(this, 100, signUpdatePeriod);
+			new SignHandler(this).runTaskTimer(this, 100, signUpdatePeriod);
 		} catch (IllegalArgumentException | IllegalStateException
 				| SQLException e) {
 			// TODO Auto-generated catch block
@@ -92,7 +86,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		}
 		}
 		if(dynamicMOTD){
-			BukkitTask updateMOTD = new MOTDUpdater(this).runTaskTimerAsynchronously(this, 100, MOTDUpdatePeriod);
+			new MOTDUpdater(this).runTaskTimerAsynchronously(this, 100, MOTDUpdatePeriod);
 		}
 	}
 
@@ -210,11 +204,11 @@ public class BungeeSuiteBukkit extends JavaPlugin {
     {
         RegisteredServiceProvider<Chat> chatProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
         if (chatProvider != null) {
-            chat = chatProvider.getProvider();
+            CHAT = chatProvider.getProvider();
         }else{
         	usingVault = false;
         }
 
-        return (chat != null);
+        return (CHAT != null);
     }
 }

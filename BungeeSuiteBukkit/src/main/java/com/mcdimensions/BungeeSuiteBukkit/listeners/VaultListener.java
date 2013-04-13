@@ -10,7 +10,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.scheduler.BukkitTask;
 
 import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 import com.mcdimensions.BungeeSuiteBukkit.Utilities.PluginMessageTask;
@@ -27,7 +26,7 @@ public class VaultListener implements Listener {
 		Player player = event.getPlayer();
 		String prefix = "";
 		String suffix = "";
-		Chat chat=plugin.chat;
+		Chat chat=BungeeSuiteBukkit.CHAT;
 		String group =chat.getPrimaryGroup(player);
 		if(chat.getPlayerPrefix(player)!=null){
 			prefix=chat.getPlayerPrefix(player);
@@ -65,7 +64,7 @@ public class VaultListener implements Listener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		BukkitTask task = new PluginMessageTask(this.plugin, event.getPlayer(), b).runTaskLater(this.plugin, 5);
+		new PluginMessageTask(this.plugin, event.getPlayer(), b).runTaskLater(this.plugin, 5);
 	}
 
 }

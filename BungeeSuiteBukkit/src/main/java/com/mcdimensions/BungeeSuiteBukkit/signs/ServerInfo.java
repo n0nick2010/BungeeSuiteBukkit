@@ -1,8 +1,6 @@
 package com.mcdimensions.BungeeSuiteBukkit.signs;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
 import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 

@@ -11,12 +11,10 @@ import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 public class PluginMessageTask extends BukkitRunnable {
     
     private final BungeeSuiteBukkit plugin;
-    private final Player player;
     private ByteArrayOutputStream bytes;
     
     public PluginMessageTask(BungeeSuiteBukkit plugin, Player player, ByteArrayOutputStream bytes) {
         this.plugin = plugin;
-        this.player = player;
         this.bytes = bytes;
     }
 
