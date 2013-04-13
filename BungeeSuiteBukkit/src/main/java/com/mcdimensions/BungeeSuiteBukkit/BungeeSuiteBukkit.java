@@ -46,11 +46,11 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	public HashMap<String, ArrayList<BungeeSign>> signs;
 	public HashSet<BungeeSign> AllSigns;
 	public SignHandler SignHandler;
-	private long signUpdatePeriod =200L;
+	private long signUpdatePeriod = 200L;
 	private long MOTDUpdatePeriod = 200L;
 	// TODO: Fix Public variable
-	 public static Chat CHAT = null;
-    //
+	public static Chat CHAT = null;
+
 	@Override
 	public void onEnable() {
 		log = Bukkit.getServer().getConsoleSender();
@@ -188,7 +188,6 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		try {
 			utils.setOffline();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -205,7 +204,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
         RegisteredServiceProvider<Chat> chatProvider = getServer().getServicesManager().getRegistration(net.milkbowl.vault.chat.Chat.class);
         if (chatProvider != null) {
             CHAT = chatProvider.getProvider();
-        }else{
+        } else {
         	usingVault = false;
         }
 
