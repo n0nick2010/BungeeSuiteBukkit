@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.listeners;
+package com.mcdimensions.bungeesuitebukkit.listeners;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -8,13 +8,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.Utilities.PluginMessageTask;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.utilities.PluginMessageTask;
 
-public class serverConnect implements Listener {
+public class ServerConnect implements Listener {
 	BungeeSuiteBukkit plugin;
 	
-	public serverConnect(BungeeSuiteBukkit bungeeSuiteBukkit) {
+	public ServerConnect(BungeeSuiteBukkit bungeeSuiteBukkit) {
 		plugin=bungeeSuiteBukkit;
 	}
 

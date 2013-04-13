@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Portals;
+package com.mcdimensions.bungeesuitebukkit.portals;
 
 import java.util.ArrayList;
 

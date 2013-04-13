@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 
 

@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit;
+package com.mcdimensions.bungeesuitebukkit;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,19 +15,19 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.mcdimensions.BungeeSuiteBukkit.Portals.Portal;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.RegionSelectionManager;
-import com.mcdimensions.BungeeSuiteBukkit.Utilities.SQL;
-import com.mcdimensions.BungeeSuiteBukkit.Utilities.Utilities;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.PluginMessengerListener;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.PortalListener;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.SignListener;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.VaultListener;
-import com.mcdimensions.BungeeSuiteBukkit.listeners.serverConnect;
-import com.mcdimensions.BungeeSuiteBukkit.signs.BungeeSign;
-import com.mcdimensions.BungeeSuiteBukkit.signs.MOTDUpdater;
-import com.mcdimensions.BungeeSuiteBukkit.signs.ServerInfo;
-import com.mcdimensions.BungeeSuiteBukkit.signs.SignHandler;
+import com.mcdimensions.bungeesuitebukkit.listeners.PluginMessengerListener;
+import com.mcdimensions.bungeesuitebukkit.listeners.PortalListener;
+import com.mcdimensions.bungeesuitebukkit.listeners.ServerConnect;
+import com.mcdimensions.bungeesuitebukkit.listeners.SignListener;
+import com.mcdimensions.bungeesuitebukkit.listeners.VaultListener;
+import com.mcdimensions.bungeesuitebukkit.portals.Portal;
+import com.mcdimensions.bungeesuitebukkit.portals.RegionSelectionManager;
+import com.mcdimensions.bungeesuitebukkit.signs.BungeeSign;
+import com.mcdimensions.bungeesuitebukkit.signs.MOTDUpdater;
+import com.mcdimensions.bungeesuitebukkit.signs.ServerInfo;
+import com.mcdimensions.bungeesuitebukkit.signs.SignHandler;
+import com.mcdimensions.bungeesuitebukkit.utilities.SQL;
+import com.mcdimensions.bungeesuitebukkit.utilities.Utilities;
 
 public class BungeeSuiteBukkit extends JavaPlugin {
 	String username, password, database, port, url;
@@ -92,7 +92,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 
 	private void registerListeners() {
 		getServer().getPluginManager().registerEvents(
-				new serverConnect(this), this);
+				new ServerConnect(this), this);
 		if (usingSigns) {
 			getServer().getPluginManager().registerEvents(
 					new SignListener(this), this);

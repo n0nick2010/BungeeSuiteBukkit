@@ -1,8 +1,8 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
 import java.sql.SQLException;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 public class ServerInfo {
 	String serverName;

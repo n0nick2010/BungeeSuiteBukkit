@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 public class MOTDUpdater extends BukkitRunnable{
 	BungeeSuiteBukkit plugin;

@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Utilities;
+package com.mcdimensions.bungeesuitebukkit.utilities;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -15,12 +15,12 @@ import org.bukkit.World;
 import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.FillType;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.Portal;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.Region;
-import com.mcdimensions.BungeeSuiteBukkit.signs.BungeeSign;
-import com.mcdimensions.BungeeSuiteBukkit.signs.ServerInfo;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.portals.FillType;
+import com.mcdimensions.bungeesuitebukkit.portals.Portal;
+import com.mcdimensions.bungeesuitebukkit.portals.Region;
+import com.mcdimensions.bungeesuitebukkit.signs.BungeeSign;
+import com.mcdimensions.bungeesuitebukkit.signs.ServerInfo;
 
 public class Utilities {
 	BungeeSuiteBukkit plugin;
@@ -34,7 +34,7 @@ public class Utilities {
 	public boolean serverExists(String name) throws SQLException {
 		sql.initialise();
 		boolean check = sql
-				.existanceQuery("SELECT ServerName FROM BungeeServers WHERE ServerName COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT ServerName FROM BungeeServers WHERE ServerName COLLATE Latin1_General_CS = '"
 						+ name + "'");
 		sql.closeConnection();
 		return check;
@@ -43,7 +43,7 @@ public class Utilities {
 	public boolean portalExists(String name) throws SQLException {
 		sql.initialise();
 		boolean check = sql
-				.existanceQuery("SELECT Name FROM BungeePortals WHERE Name COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT Name FROM BungeePortals WHERE Name COLLATE Latin1_General_CS = '"
 						+ name + "'");
 		sql.closeConnection();
 		return check;
@@ -52,7 +52,7 @@ public class Utilities {
 	public boolean warpExists(String name) throws SQLException {
 		sql.initialise();
 		boolean check = sql
-				.existanceQuery("SELECT Name FROM BungeeWarps WHERE Name = '"
+				.existenceQuery("SELECT Name FROM BungeeWarps WHERE Name = '"
 						+ name + "'");
 		sql.closeConnection();
 		return check;
@@ -61,7 +61,7 @@ public class Utilities {
 	public boolean portalLocationExists(String name) throws SQLException {
 		sql.initialise();
 		boolean check = sql
-				.existanceQuery("SELECT Name FROM BungeeWarps WHERE Name COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT Name FROM BungeeWarps WHERE Name COLLATE Latin1_General_CS = '"
 						+ name + "'");
 		sql.closeConnection();
 		return check;
@@ -87,7 +87,7 @@ public class Utilities {
 		boolean check = false;
 		sql.initialise();
 		check = sql
-				.existanceQuery("SELECT Online FROM BungeeServers WHERE ServerName = '"
+				.existenceQuery("SELECT Online FROM BungeeServers WHERE ServerName = '"
 						+ server + "' AND Online =TRUE");
 		sql.closeConnection();
 		return check;

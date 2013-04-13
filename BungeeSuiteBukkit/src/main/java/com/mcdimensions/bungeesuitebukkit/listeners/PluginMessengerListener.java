@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.listeners;
+package com.mcdimensions.bungeesuitebukkit.listeners;
 
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
@@ -11,10 +11,10 @@ import org.bukkit.Chunk;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.FillType;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.Region;
-import com.mcdimensions.BungeeSuiteBukkit.Warps.WarpLocation;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.portals.FillType;
+import com.mcdimensions.bungeesuitebukkit.portals.Region;
+import com.mcdimensions.bungeesuitebukkit.warps.WarpLocation;
 
 public class PluginMessengerListener implements PluginMessageListener {
 	BungeeSuiteBukkit plugin;

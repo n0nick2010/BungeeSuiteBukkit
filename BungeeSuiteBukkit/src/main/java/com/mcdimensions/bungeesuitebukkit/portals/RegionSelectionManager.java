@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Portals;
+package com.mcdimensions.bungeesuitebukkit.portals;
 
 
 import java.util.HashMap;
@@ -10,7 +10,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 public class RegionSelectionManager implements Listener {
 	private Material selectionTools = Material.WOOD_AXE;

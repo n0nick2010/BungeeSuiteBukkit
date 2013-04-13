@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
 import org.bukkit.block.Sign;
 

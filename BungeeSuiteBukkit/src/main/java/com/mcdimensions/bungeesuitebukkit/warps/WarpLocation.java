@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Warps;
+package com.mcdimensions.bungeesuitebukkit.warps;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;

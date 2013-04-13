@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Utilities;
+package com.mcdimensions.bungeesuitebukkit.utilities;
 
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -7,9 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-
-
 public class SQL{
+	private static final String DRIVER_MYSQL = "com.mysql.jdbc.Driver";
+	
 	private String host, database, username, password, port;
 	private Connection connection;
 	
@@ -48,7 +48,7 @@ public class SQL{
 		this.refreshConnection();
 		standardQuery(query, this.connection);
 	}
-	public boolean existanceQuery(String query) throws SQLException {
+	public boolean existenceQuery(String query) throws SQLException {
 		this.refreshConnection();
 		return sqlQuery(query, this.connection).next();
 	}

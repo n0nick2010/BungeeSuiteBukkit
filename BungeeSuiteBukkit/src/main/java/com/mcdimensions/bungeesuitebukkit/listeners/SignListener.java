@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.listeners;
+package com.mcdimensions.bungeesuitebukkit.listeners;
 
 import java.sql.SQLException;
 
@@ -15,9 +15,9 @@ import org.bukkit.event.player.PlayerLoginEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 import org.bukkit.event.world.ChunkUnloadEvent;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.Utilities.Utilities;
-import com.mcdimensions.BungeeSuiteBukkit.signs.BungeeSign;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.signs.BungeeSign;
+import com.mcdimensions.bungeesuitebukkit.utilities.Utilities;
 
 public class SignListener implements Listener {
 	BungeeSuiteBukkit plugin;

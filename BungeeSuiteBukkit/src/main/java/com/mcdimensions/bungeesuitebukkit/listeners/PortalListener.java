@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.listeners;
+package com.mcdimensions.bungeesuitebukkit.listeners;
 
 import java.io.IOException;
 
@@ -10,9 +10,9 @@ import org.bukkit.event.block.BlockFromToEvent;
 import org.bukkit.event.block.BlockPhysicsEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
-import com.mcdimensions.BungeeSuiteBukkit.Portals.Portal;
-import com.mcdimensions.BungeeSuiteBukkit.Utilities.Utilities;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.portals.Portal;
+import com.mcdimensions.bungeesuitebukkit.utilities.Utilities;
 
 public class PortalListener implements Listener {
 
