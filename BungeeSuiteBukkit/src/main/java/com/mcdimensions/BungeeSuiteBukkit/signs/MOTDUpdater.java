@@ -18,6 +18,7 @@ import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
 
 public class MOTDUpdater extends BukkitRunnable{
 	BungeeSuiteBukkit plugin;
+	private static final String SECTION_CHAR = "\u00A7";
 	
 	public MOTDUpdater(BungeeSuiteBukkit bungeeSuiteBukkit) {
 		this.plugin = bungeeSuiteBukkit;
@@ -74,7 +75,7 @@ public class MOTDUpdater extends BukkitRunnable{
 
 				String string = new String(chars);
 
-				if (string.startsWith("§")) {
+				if (string.startsWith(SECTION_CHAR)) {
 					String[] data = string.split("\0");
 
 //					this.setPingVersion(Integer.parseInt(data[0].substring(1)));
@@ -84,7 +85,7 @@ public class MOTDUpdater extends BukkitRunnable{
 //					this.setPlayersOnline(Integer.parseInt(data[4]));
 //					this.setMaxPlayers(Integer.parseInt(data[5]));
 				} else {
-					String[] data = string.split("§");
+					String[] data = string.split(SECTION_CHAR);
 
 					motd = data[0];
 //					this.setPlayersOnline(Integer.parseInt(data[1]));
