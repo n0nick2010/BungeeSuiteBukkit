@@ -15,6 +15,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import com.mcdimensions.bungeesuitebukkit.database.Database;
+import com.mcdimensions.bungeesuitebukkit.database.DatabaseDependencyException;
 import com.mcdimensions.bungeesuitebukkit.listeners.PluginMessengerListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.PortalListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.ServerConnect;
@@ -26,15 +28,14 @@ import com.mcdimensions.bungeesuitebukkit.signs.BungeeSign;
 import com.mcdimensions.bungeesuitebukkit.signs.MOTDUpdater;
 import com.mcdimensions.bungeesuitebukkit.signs.ServerInfo;
 import com.mcdimensions.bungeesuitebukkit.signs.SignHandler;
-import com.mcdimensions.bungeesuitebukkit.utilities.SQL;
 import com.mcdimensions.bungeesuitebukkit.utilities.Utilities;
 
 public class BungeeSuiteBukkit extends JavaPlugin {
-	String username, password, database, port, url;
+	String username, password, databaseHost, port, url;
 	public String motd, OnDisableTarget;
 	public Boolean dynamicMOTD, showPlayers, usingSigns, usingPortals,
 			usingWarps, usingVault;
-	public SQL sql;
+	public Database database;
 	
 	public ConsoleCommandSender log;
 	FileConfiguration config;
@@ -64,6 +65,9 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+		} catch (DatabaseDependencyException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 		log.sendMessage(ChatColor.GREEN + "- Registering Plugin Channels");
@@ -118,9 +122,9 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 
 	}
 
-	private void initialiseVariables() throws SQLException {
+	private void initialiseVariables() throws SQLException, DatabaseDependencyException {
 		portals = new HashMap<String, Portal>();
-		sql = new SQL(url, database, port, username, password);
+		database = new Database(url, databaseHost, port, username, password);
 		motd = Bukkit.getMotd();
 		utils = new Utilities(this);
 		try {
@@ -165,7 +169,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		saveConfig();
 		this.username = config.getString("Database.username");
 		this.password = config.getString("Database.password");
-		this.database = config.getString("Database.database");
+		this.databaseHost = config.getString("Database.database");
 		this.url = config.getString("Database.url");
 		this.port = config.getString("Database.port");
 		this.usingSigns = config.getBoolean("Signs.Enabled");

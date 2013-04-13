@@ -33,7 +33,7 @@ public class ServerInfo {
 		}
 	}
 	public boolean updatePlayerCount() throws SQLException{
-		int newPlayersOnline = plugin.utils.getPlayersOnline(serverName);
+		int newPlayersOnline = plugin.utils.getOnlinePlayerCount(serverName);
 		if(newPlayersOnline == playersOnline){
 			return false;
 		}else{
