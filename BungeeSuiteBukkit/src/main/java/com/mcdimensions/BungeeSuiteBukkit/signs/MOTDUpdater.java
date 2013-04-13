@@ -26,8 +26,9 @@ public class MOTDUpdater extends BukkitRunnable{
 
 	public void run(){
 			String motd = null;
+			Socket socket = null;
 			try {
-				Socket socket = new Socket();
+				socket = new Socket();
 				OutputStream outputStream;
 				DataOutputStream dataOutputStream;
 				InputStream inputStream;
@@ -98,11 +99,18 @@ public class MOTDUpdater extends BukkitRunnable{
 				inputStreamReader.close();
 				inputStream.close();
 
-				socket.close();
-			} catch (SocketException exception) {
-
-			} catch (IOException exception) {
-
+			} catch (SocketException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				if (socket != null && !socket.isClosed()) {
+					try {
+						socket.close();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
 			}
 			try {
 				plugin.utils.setMOTD();
