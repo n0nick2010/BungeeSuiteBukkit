@@ -194,7 +194,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		this.OnDisableTarget = config.getString("Warps.OnDisableTarget");
 		
 		this.usingPortals = config.getBoolean("Portals.Enabled");
-		this.usingPortals = config.getBoolean("Portals.AlertOnRegionSelection");
+		this.portalRegionSelectionMessage = config.getBoolean("Portals.AlertOnRegionSelection");
 		
 		this.usingVault = config.getBoolean("Chat.SendVaultInfo");
 	}
