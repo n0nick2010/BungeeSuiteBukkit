@@ -37,7 +37,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	
 	public String motd, OnDisableTarget;
 	public Boolean dynamicMOTD, showPlayers, usingSigns, usingPortals,
-			usingWarps, usingVault;
+			portalRegionSelectionMessage, usingWarps, usingVault;
 	public Database database;
 	
 	public ConsoleCommandSender log;
@@ -170,24 +170,34 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		config.addDefault("Warps.WarpOnDisable", true);
 		config.addDefault("Warps.OnDisableTarget", "none");
 		config.addDefault("Portals.Enabled", true);
+		config.addDefault("Portals.AlertOnRegionSelection", true);
 		config.addDefault("Chat.SendVaultInfo", true);
 		config.addDefault("Chat.UseGroupPrefixesAndSuffixes", true);
 		config.options().copyDefaults(true);
+		
 		saveConfig();
+		
 		this.username = config.getString("Database.username");
 		this.password = config.getString("Database.password");
 		this.databaseHost = config.getString("Database.database");
 		this.url = config.getString("Database.url");
 		this.port = config.getString("Database.port");
+		
 		this.usingSigns = config.getBoolean("Signs.Enabled");
-		this.signUpdatePeriod =(Long)Long.parseLong(config.getString("Signs.UpdatePeriod"));
+		this.signUpdatePeriod = (Long) Long.parseLong(config
+				.getString("Signs.UpdatePeriod"));
 		this.dynamicMOTD = config.getBoolean("Signs.SendDynamicMOTD");
-		this.MOTDUpdatePeriod = (Long)Long.parseLong(config.getString("Signs.MOTDUpdatePeriod"));
+		this.MOTDUpdatePeriod = (Long) Long.parseLong(config
+				.getString("Signs.MOTDUpdatePeriod"));
+		
 		this.usingWarps = config.getBoolean("Warps.Enabled");
-		this.usingPortals = config.getBoolean("Portals.Enabled");
 		this.OnDisableTarget = config.getString("Warps.OnDisableTarget");
+		
+		this.usingPortals = config.getBoolean("Portals.Enabled");
+		this.usingPortals = config.getBoolean("Portals.AlertOnRegionSelection");
+		
 		this.usingVault = config.getBoolean("Chat.SendVaultInfo");
-		}
+	}
 
 	public Collection<Portal> getPortals() {
 		return portals.values();
