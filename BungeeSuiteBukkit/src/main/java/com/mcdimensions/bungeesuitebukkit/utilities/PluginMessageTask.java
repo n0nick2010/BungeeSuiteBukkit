@@ -11,7 +11,7 @@ import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 public class PluginMessageTask extends BukkitRunnable {
     
     private final BungeeSuiteBukkit plugin;
-    private ByteArrayOutputStream bytes;
+    private final ByteArrayOutputStream bytes;
     
     public PluginMessageTask(BungeeSuiteBukkit plugin, Player player, ByteArrayOutputStream bytes) {
         this.plugin = plugin;
@@ -19,7 +19,7 @@ public class PluginMessageTask extends BukkitRunnable {
     }
 
     public void run() {
-        Bukkit.getServer().sendPluginMessage(this.plugin, "BungeeSuite", this.bytes.toByteArray());
+        Bukkit.getServer().sendPluginMessage(plugin, BungeeSuiteBukkit.OUTGOING_PLUGIN_CHANNEL, bytes.toByteArray());
     }
 
 }

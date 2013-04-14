@@ -27,7 +27,7 @@ public class PluginMessengerListener implements PluginMessageListener {
 
 	@Override
 	public void onPluginMessageReceived(String channel, Player sender, byte[] message) {
-		if(!channel.equalsIgnoreCase("BungeeSuiteMC"))return;
+		if(!channel.equalsIgnoreCase(BungeeSuiteBukkit.INCOMING_PLUGIN_CHANNEL))return;
 		DataInputStream in = new DataInputStream(new ByteArrayInputStream(message));
 
 		String chan = null;

@@ -300,7 +300,7 @@ public class Utilities {
 		} catch (IOException e) {
 			// Can never happen
 		}
-		player.sendPluginMessage(this.plugin, "BungeeCord", b.toByteArray());
+		player.sendPluginMessage(this.plugin, BungeeSuiteBukkit.OUTGOING_BUNGEECORD_CHANNEL, b.toByteArray());
 	}
 
 	public void createWarp(String name, Location loc, boolean visible)
@@ -330,7 +330,7 @@ public class Utilities {
 		out.writeUTF("warp");
 		out.writeUTF(name);
 		out.writeUTF(player.getName());
-		player.sendPluginMessage(plugin, "BungeeSuite", b.toByteArray());
+		player.sendPluginMessage(plugin, BungeeSuiteBukkit.OUTGOING_PLUGIN_CHANNEL, b.toByteArray());
 	}
 
 	public void deleteWarp(String name) throws SQLException {

@@ -19,7 +19,7 @@ import com.mcdimensions.bungeesuitebukkit.database.Database;
 import com.mcdimensions.bungeesuitebukkit.database.DatabaseDependencyException;
 import com.mcdimensions.bungeesuitebukkit.listeners.PluginMessengerListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.PortalListener;
-import com.mcdimensions.bungeesuitebukkit.listeners.ServerConnect;
+import com.mcdimensions.bungeesuitebukkit.listeners.PlayerConnect;
 import com.mcdimensions.bungeesuitebukkit.listeners.SignListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.VaultListener;
 import com.mcdimensions.bungeesuitebukkit.portals.Portal;
@@ -31,14 +31,16 @@ import com.mcdimensions.bungeesuitebukkit.signs.SignHandler;
 import com.mcdimensions.bungeesuitebukkit.utilities.Utilities;
 
 public class BungeeSuiteBukkit extends JavaPlugin {
-	String username, password, databaseHost, port, url;
+	public static final String OUTGOING_PLUGIN_CHANNEL = "BungeeSuite";
+	public static final String INCOMING_PLUGIN_CHANNEL = "BungeeSuiteMC";
+	public static final String OUTGOING_BUNGEECORD_CHANNEL = "BungeeCord";
+	
 	public String motd, OnDisableTarget;
 	public Boolean dynamicMOTD, showPlayers, usingSigns, usingPortals,
 			usingWarps, usingVault;
 	public Database database;
 	
 	public ConsoleCommandSender log;
-	FileConfiguration config;
 	public Utilities utils;
 	public RegionSelectionManager rsm;
 	public HashMap<String, Portal> portals;
@@ -47,8 +49,13 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	public HashMap<String, ArrayList<BungeeSign>> signs;
 	public HashSet<BungeeSign> AllSigns;
 	public SignHandler SignHandler;
+	
 	private long signUpdatePeriod = 200L;
 	private long MOTDUpdatePeriod = 200L;
+
+	private FileConfiguration config;
+	private String username, password, databaseHost, port, url;
+
 	// TODO: Fix Public variable
 	public static Chat CHAT = null;
 
@@ -81,13 +88,13 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 			e.printStackTrace();
 		}
 		if(usingSigns){
-		try {
-			new SignHandler(this).runTaskTimer(this, 100, signUpdatePeriod);
-		} catch (IllegalArgumentException | IllegalStateException
-				| SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			try {
+				new SignHandler(this).runTaskTimer(this, 100, signUpdatePeriod);
+			} catch (IllegalArgumentException | IllegalStateException
+					| SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		if(dynamicMOTD){
 			new MOTDUpdater(this).runTaskTimerAsynchronously(this, 100, MOTDUpdatePeriod);
@@ -96,7 +103,7 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 
 	private void registerListeners() {
 		getServer().getPluginManager().registerEvents(
-				new ServerConnect(this), this);
+				new PlayerConnect(this), this);
 		if (usingSigns) {
 			getServer().getPluginManager().registerEvents(
 					new SignListener(this), this);
@@ -115,10 +122,10 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	}
 
 	private void registerPluginChannels() {
-		Bukkit.getMessenger().registerIncomingPluginChannel(this, "BungeeSuiteMC", new PluginMessengerListener(this));
+		Bukkit.getMessenger().registerIncomingPluginChannel(this, INCOMING_PLUGIN_CHANNEL, new PluginMessengerListener(this));
 		Bukkit.getMessenger()
-				.registerOutgoingPluginChannel(this, "BungeeSuite");
-		Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+				.registerOutgoingPluginChannel(this, OUTGOING_PLUGIN_CHANNEL);
+		Bukkit.getMessenger().registerOutgoingPluginChannel(this, OUTGOING_BUNGEECORD_CHANNEL);
 
 	}
 
