@@ -92,7 +92,7 @@ public class Database {
 		ResultSet results = sqlQuery(query, connection);
 		String result = null;
 		if (results.next()) {
-			result = results.getString(0);
+			result = results.getString(1);
 			if (result == null) {
 				result = "";
 			}
@@ -107,7 +107,7 @@ public class Database {
 		ResultSet results = sqlQuery(query, connection);
 		Object result = null;
 		if (results.next()) {
-			result = results.getObject(0);
+			result = results.getObject(1);
 		}
 		results.close();
 		connection.close();
