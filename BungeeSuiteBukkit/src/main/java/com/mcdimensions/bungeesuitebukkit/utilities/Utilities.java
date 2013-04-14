@@ -35,14 +35,14 @@ public class Utilities {
 
 	public boolean serverExists(String name) throws SQLException {
 		boolean check = db
-				.existenceQuery("SELECT ServerName FROM BungeeServers WHERE ServerName COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT ServerName FROM BungeeServers WHERE ServerName = '"
 						+ name + "'");
 		return check;
 	}
 
 	public boolean portalExists(String name) throws SQLException {
 		boolean check = db
-				.existenceQuery("SELECT Name FROM BungeePortals WHERE Name COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT Name FROM BungeePortals WHERE Name = '"
 						+ name + "'");
 		return check;
 	}
@@ -56,7 +56,7 @@ public class Utilities {
 
 	public boolean portalLocationExists(String name) throws SQLException {
 		boolean check = db
-				.existenceQuery("SELECT Name FROM BungeeWarps WHERE Name COLLATE Latin1_General_CS = '"
+				.existenceQuery("SELECT Name FROM BungeeWarps WHERE Name = '"
 						+ name + "'");
 		return check;
 	}
