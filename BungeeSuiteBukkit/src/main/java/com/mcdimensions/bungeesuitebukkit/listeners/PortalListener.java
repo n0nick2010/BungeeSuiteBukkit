@@ -18,52 +18,49 @@ public class PortalListener implements Listener {
 
 	BungeeSuiteBukkit plugin;
 	Utilities utils;
+
 	public PortalListener(BungeeSuiteBukkit bungeeSuiteBukkit) {
 		plugin = bungeeSuiteBukkit;
-		utils =plugin.utils;
+		utils = plugin.utils;
 	}
-	
+
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerMove(PlayerMoveEvent e) throws IOException {
-		if (e.isCancelled()) { return; }
+		if (e.isCancelled())
+			return;
+
 		Player p = e.getPlayer();
-		if (!e.getFrom().getBlock().getLocation().equals(e.getTo().getBlock().getLocation()))
-		{
+		if (!e.getFrom().getBlock().getLocation().equals(e.getTo().getBlock().getLocation())) {
 			Portal portal = utils.getPortalByPosition(e.getTo());
-			if (portal != null)
-			{
-				if(portal.hasWarp()){
+
+			if (portal != null) {
+				if (portal.containsLocation(e.getFrom().getBlock().getLocation(), 0))
+					return;
+
+				if (portal.hasWarp())
 					utils.warp(portal.getWarp(), e.getPlayer());
-				}else{
-				utils.TeleportPlayerServer(portal.getToServer(), p);
-				return;
-				}
-				
+				else
+					utils.TeleportPlayerServer(portal.getToServer(), p);
+
 			}
 		}
 	}
-	
+
 	@EventHandler(priority = EventPriority.HIGHEST)
-	public void onBlockFromTo(BlockFromToEvent e)
-	{
-			for (Portal p : plugin.getPortals())
-			{
-				if (p.isIn(e.getBlock().getLocation()) && !p.isIn(e.getToBlock().getLocation()))
-				{
-					e.setCancelled(true);
-					return;
-				}
+	public void onBlockFromTo(BlockFromToEvent e) {
+		for (Portal p : plugin.getPortals()) {
+			if (p.isIn(e.getBlock().getLocation())&& !p.isIn(e.getToBlock().getLocation())) {
+				e.setCancelled(true);
+				return;
 			}
-		
+		}
+
 	}
 
 	@EventHandler(priority = EventPriority.NORMAL)
-	public void onBlockPhysics(BlockPhysicsEvent e)
-	{
-		for (Portal p : plugin.getPortals())
-		{
-			if (p.isIn(e.getBlock().getLocation()))
-			{
+	public void onBlockPhysics(BlockPhysicsEvent e) {
+		for (Portal p : plugin.getPortals()) {
+			if (p.isIn(e.getBlock().getLocation())) {
 				e.setCancelled(true);
 				return;
 			}
