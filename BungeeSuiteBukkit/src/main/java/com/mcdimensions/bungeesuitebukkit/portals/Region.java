@@ -1,4 +1,4 @@
-package com.mcdimensions.BungeeSuiteBukkit.Portals;
+package com.mcdimensions.bungeesuitebukkit.portals;
 
 import java.util.ArrayList;
 
@@ -24,12 +24,12 @@ public class Region {
 	public ArrayList<Location> getBlocks()
 	{
 		ArrayList<Location> locs = new ArrayList<Location>();
-		int maxx = (first.getBlockX() > end.getBlockX()) ? first.getBlockX() : end.getBlockX();
-		int minx = (first.getBlockX() < end.getBlockX()) ? first.getBlockX() : end.getBlockX();
-		int maxy = (first.getBlockY() > end.getBlockY()) ? first.getBlockY() : end.getBlockY();
-		int miny = (first.getBlockY() < end.getBlockY()) ? first.getBlockY() : end.getBlockY();
-		int maxz = (first.getBlockZ() > end.getBlockZ()) ? first.getBlockZ() : end.getBlockZ();
-		int minz = (first.getBlockZ() < end.getBlockZ()) ? first.getBlockZ() : end.getBlockZ();
+		int maxx = Math.max(first.getBlockX(), end.getBlockX());
+		int minx = Math.min(first.getBlockX(), end.getBlockX());
+		int maxy = Math.max(first.getBlockY(), end.getBlockY());
+		int miny = Math.min(first.getBlockY(), end.getBlockY());
+		int maxz = Math.max(first.getBlockZ(), end.getBlockZ());
+		int minz = Math.min(first.getBlockZ(), end.getBlockZ());
 		for (int fy = miny;fy <= maxy;fy++)
 		{
 			for (int fx = minx;fx <= maxx;fx++)
@@ -46,12 +46,12 @@ public class Region {
 	public boolean isIn(Location l, double offset)
 	{
 
-		double maxx = ((first.getBlockX() > end.getBlockX()) ? first.getBlockX() : end.getBlockX()) + offset;
-		double minx = ((first.getBlockX() < end.getBlockX()) ? first.getBlockX() : end.getBlockX()) - offset;
-		double maxy = ((first.getBlockY() > end.getBlockY()) ? first.getBlockY() : end.getBlockY()) + offset;
-		double miny = ((first.getBlockY() < end.getBlockY()) ? first.getBlockY() : end.getBlockY()) - offset;
-		double maxz = ((first.getBlockZ() > end.getBlockZ()) ? first.getBlockZ() : end.getBlockZ()) + offset;
-		double minz = ((first.getBlockZ() < end.getBlockZ()) ? first.getBlockZ() : end.getBlockZ()) - offset;
+		double maxx = Math.max(first.getBlockX(), end.getBlockX()) + offset;
+		double minx = Math.min(first.getBlockX(), end.getBlockX()) - offset;
+		double maxy = Math.max(first.getBlockY(), end.getBlockY()) + offset;
+		double miny = Math.min(first.getBlockY(), end.getBlockY()) - offset;
+		double maxz = Math.max(first.getBlockZ(), end.getBlockZ()) + offset;
+		double minz = Math.min(first.getBlockZ(), end.getBlockZ()) - offset;
 		if ((l.getX() >= minx && l.getX() < maxx + 1) && (l.getY() >= miny && l.getY() < maxy + 1) && (l.getZ() >= minz && l.getZ() < maxz + 1))
 			return true;
 

@@ -1,5 +1,6 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
+import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 
 
@@ -278,8 +279,8 @@ public class SignHandler extends BukkitRunnable {
 	public String signExists(Sign sign) throws SQLException { // returns type if
 																// true null if
 																// false
-		plugin.sql.initialise();
-		ResultSet res = plugin.sql
+		Connection connection = plugin.database.getConnection();
+		ResultSet res = plugin.database
 				.sqlQuery("SELECT TargetServer FROM BungeeSignLocations WHERE World = '"
 						+ sign.getWorld().getName()
 						+ "' AND Server = '"
@@ -290,7 +291,8 @@ public class SignHandler extends BukkitRunnable {
 						+ sign.getY()
 						+ " AND Z="
 						+ sign.getZ()
-						+ "");
+						+ "",
+						connection);
 		String targetServer = null;
 		while (res.next()) {
 			try {
@@ -300,14 +302,13 @@ public class SignHandler extends BukkitRunnable {
 			}
 		}
 		res.close();
-		plugin.sql.closeConnection();
+		connection.close();
 		return targetServer;
 	}
 
 	public void deleteSign(Sign sign) throws SQLException {
-		plugin.sql.initialise();
-		plugin.sql
-				.standardQuery("DELETE FROM BungeeSignLocations WHERE World = '"
+		plugin.database
+				.updateQuery("DELETE FROM BungeeSignLocations WHERE World = '"
 						+ sign.getWorld().getName()
 						+ "' AND Server = '"
 						+ Bukkit.getServerName()
@@ -318,7 +319,6 @@ public class SignHandler extends BukkitRunnable {
 						+ " AND Z="
 						+ sign.getZ()
 						+ "");
-		plugin.sql.closeConnection();
 
 	}
 

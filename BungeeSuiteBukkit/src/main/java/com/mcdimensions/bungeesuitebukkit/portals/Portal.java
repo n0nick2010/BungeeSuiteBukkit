@@ -2,18 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.mcdimensions.BungeeSuiteBukkit.Portals;
+package com.mcdimensions.bungeesuitebukkit.portals;
 
-
-import java.util.ArrayList;
-
-import org.bukkit.Bukkit;
-import org.bukkit.Chunk;
 import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
-
-
 
 /**
  *

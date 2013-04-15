@@ -1,5 +1,5 @@
 name: BungeeSuite
-main : com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit
+main : com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit
 version: 0.75
 softdepend: [Vault]
 permissions:

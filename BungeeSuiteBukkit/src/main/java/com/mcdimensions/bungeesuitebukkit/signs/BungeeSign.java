@@ -1,6 +1,5 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
-import org.bukkit.Bukkit;
 import org.bukkit.block.Sign;
 
 public class BungeeSign {

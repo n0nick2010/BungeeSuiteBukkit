@@ -1,10 +1,8 @@
-package com.mcdimensions.BungeeSuiteBukkit.signs;
+package com.mcdimensions.bungeesuitebukkit.signs;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
 
-import com.mcdimensions.BungeeSuiteBukkit.BungeeSuiteBukkit;
+import com.mcdimensions.bungeesuitebukkit.BungeeSuiteBukkit;
 
 public class ServerInfo {
 	String serverName;
@@ -35,7 +33,7 @@ public class ServerInfo {
 		}
 	}
 	public boolean updatePlayerCount() throws SQLException{
-		int newPlayersOnline = plugin.utils.getPlayersOnline(serverName);
+		int newPlayersOnline = plugin.utils.getOnlinePlayerCount(serverName);
 		if(newPlayersOnline == playersOnline){
 			return false;
 		}else{
