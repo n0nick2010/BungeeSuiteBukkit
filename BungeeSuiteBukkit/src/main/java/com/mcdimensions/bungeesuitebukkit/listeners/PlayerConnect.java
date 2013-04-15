@@ -30,7 +30,7 @@ public class PlayerConnect implements Listener {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		new PluginMessageTask(this.plugin, player, b).runTaskLater(this.plugin, 5);
+		new PluginMessageTask(this.plugin, player, b).runTaskLaterAsynchronously(this.plugin, 5);
 	}
 
 }
