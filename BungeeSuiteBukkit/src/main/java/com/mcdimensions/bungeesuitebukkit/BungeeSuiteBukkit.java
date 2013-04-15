@@ -70,10 +70,8 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		try {
 			initialiseVariables();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (DatabaseDependencyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -84,15 +82,13 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		try {
 			utils.setOnline();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(usingSigns){
 			try {
-				new SignHandler(this).runTaskTimer(this, 100, signUpdatePeriod);
+				new SignHandler(this).runTaskTimerAsynchronously(this, 100, signUpdatePeriod);
 			} catch (IllegalArgumentException | IllegalStateException
 					| SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
