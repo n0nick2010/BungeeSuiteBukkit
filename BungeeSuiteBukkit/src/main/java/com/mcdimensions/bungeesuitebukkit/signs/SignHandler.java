@@ -117,7 +117,7 @@ public class SignHandler extends BukkitRunnable {
 			}
 			Format = replaceVariables(Format, sign);
 			String lines[] = lineSplit(Format);
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		} else if (type.equalsIgnoreCase("playerList")) {
 			String format = "";
 			if (plugin.utils.ServerStatus(sign.getServer())) {
@@ -128,7 +128,7 @@ public class SignHandler extends BukkitRunnable {
 			format = ColorString(format);
 			format = replaceVariables(format, sign);
 			String lines[] = format.split(",");
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		} else if (type.equalsIgnoreCase("Portal")) {
 			String format = "";
 			if (plugin.utils.ServerStatus(sign.getServer())) {
@@ -139,7 +139,7 @@ public class SignHandler extends BukkitRunnable {
 			format = ColorString(format);
 			format = replaceVariables(format, sign);
 			String lines[] = format.split(",");
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		}
 	}
 
@@ -177,7 +177,7 @@ public class SignHandler extends BukkitRunnable {
 		} else {
 			lines = format.split(",");
 		}
-		sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+		sign.setLines(lines);
 
 	}
 
