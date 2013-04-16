@@ -217,10 +217,10 @@ public class SignHandler extends BukkitRunnable {
 	}
 
 	public String ColorString(String string) {
-		String output = "";
+		String output = string;
 		
 		if (output.contains("&0"))
-			output = string.replace("&0", ChatColor.BLACK.toString());
+			output = output.replace("&0", ChatColor.BLACK.toString());
 		if (output.contains("&1"))
 			output = output.replace("&1", ChatColor.DARK_BLUE.toString());
 		if (output.contains("&2"))

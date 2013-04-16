@@ -21,6 +21,7 @@ public class BungeeSign {
 
 		sign.update(true);
 	}
+	
 	public boolean isType(String type){
 		if(Type.equalsIgnoreCase(type)){
 			return true;
