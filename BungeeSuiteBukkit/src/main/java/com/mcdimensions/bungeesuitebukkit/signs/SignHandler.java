@@ -117,7 +117,7 @@ public class SignHandler extends BukkitRunnable {
 			}
 			Format = replaceVariables(Format, sign);
 			String lines[] = lineSplit(Format);
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		} else if (type.equalsIgnoreCase("playerList")) {
 			String format = "";
 			if (plugin.utils.ServerStatus(sign.getServer())) {
@@ -128,7 +128,7 @@ public class SignHandler extends BukkitRunnable {
 			format = ColorString(format);
 			format = replaceVariables(format, sign);
 			String lines[] = format.split(",");
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		} else if (type.equalsIgnoreCase("Portal")) {
 			String format = "";
 			if (plugin.utils.ServerStatus(sign.getServer())) {
@@ -139,7 +139,7 @@ public class SignHandler extends BukkitRunnable {
 			format = ColorString(format);
 			format = replaceVariables(format, sign);
 			String lines[] = format.split(",");
-			sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+			sign.setLines(lines);
 		}
 	}
 
@@ -177,7 +177,7 @@ public class SignHandler extends BukkitRunnable {
 		} else {
 			lines = format.split(",");
 		}
-		sign.setLines(lines[0], lines[1], lines[2], lines[3]);
+		sign.setLines(lines);
 
 	}
 
@@ -202,38 +202,66 @@ public class SignHandler extends BukkitRunnable {
 	}
 
 	public String replaceVariables(String string, BungeeSign sign) {
-		String output = "";
+		String output = string;
 		ServerInfo server = plugin.servers.get(sign.targetServer);
-		output = string.replace("%server", server.serverName);
-		output = output.replace("%motd", server.MOTD);
-		output = output.replace("%players", server.playersOnline + "/"
-				+ server.maxPlayers);
+		
+		if (output.contains("%server"))
+			output = output.replace("%server", server.serverName);
+		if (output.contains("%motd"))
+			output = output.replace("%motd", server.MOTD);
+		if (output.contains("%players"))
+			output = output.replace("%players", server.playersOnline + "/"
+					+ server.maxPlayers);
+		
 		return output;
 	}
 
 	public String ColorString(String string) {
-		String output = "";
-		output = string.replace("&0", ChatColor.BLACK.toString());
-		output = output.replace("&1", ChatColor.DARK_BLUE.toString());
-		output = output.replace("&2", ChatColor.DARK_GREEN.toString());
-		output = output.replace("&3", ChatColor.DARK_AQUA.toString());
-		output = output.replace("&4", ChatColor.DARK_RED.toString());
-		output = output.replace("&5", ChatColor.DARK_PURPLE.toString());
-		output = output.replace("&6", ChatColor.GOLD.toString());
-		output = output.replace("&7", ChatColor.GRAY.toString());
-		output = output.replace("&8", ChatColor.DARK_GRAY.toString());
-		output = output.replace("&9", ChatColor.BLUE.toString());
-		output = output.replace("&a", ChatColor.GREEN.toString());
-		output = output.replace("&b", ChatColor.AQUA.toString());
-		output = output.replace("&c", ChatColor.RED.toString());
-		output = output.replace("&d", ChatColor.LIGHT_PURPLE.toString());
-		output = output.replace("&e", ChatColor.YELLOW.toString());
-		output = output.replace("&f", ChatColor.WHITE.toString());
-		output = output.replace("&k", ChatColor.MAGIC.toString());
-		output = output.replace("&l", ChatColor.BOLD.toString());
-		output = output.replace("&n", ChatColor.UNDERLINE.toString());
-		output = output.replace("&o", ChatColor.ITALIC.toString());
-		output = output.replace("&m", ChatColor.STRIKETHROUGH.toString());
+		String output = string;
+		
+		if (output.contains("&0"))
+			output = output.replace("&0", ChatColor.BLACK.toString());
+		if (output.contains("&1"))
+			output = output.replace("&1", ChatColor.DARK_BLUE.toString());
+		if (output.contains("&2"))
+			output = output.replace("&2", ChatColor.DARK_GREEN.toString());
+		if (output.contains("&3"))
+			output = output.replace("&3", ChatColor.DARK_AQUA.toString());
+		if (output.contains("&4"))
+			output = output.replace("&4", ChatColor.DARK_RED.toString());
+		if (output.contains("&5"))
+			output = output.replace("&5", ChatColor.DARK_PURPLE.toString());
+		if (output.contains("&6"))
+			output = output.replace("&6", ChatColor.GOLD.toString());
+		if (output.contains("&7"))
+			output = output.replace("&7", ChatColor.GRAY.toString());
+		if (output.contains("&8"))
+			output = output.replace("&8", ChatColor.DARK_GRAY.toString());
+		if (output.contains("&9"))
+			output = output.replace("&9", ChatColor.BLUE.toString());
+		if (output.contains("&a"))
+			output = output.replace("&a", ChatColor.GREEN.toString());
+		if (output.contains("&b"))
+			output = output.replace("&b", ChatColor.AQUA.toString());
+		if (output.contains("&c"))
+			output = output.replace("&c", ChatColor.RED.toString());
+		if (output.contains("&d"))
+			output = output.replace("&d", ChatColor.LIGHT_PURPLE.toString());
+		if (output.contains("&e"))
+			output = output.replace("&e", ChatColor.YELLOW.toString());
+		if (output.contains("&f"))
+			output = output.replace("&f", ChatColor.WHITE.toString());
+		if (output.contains("&k"))
+			output = output.replace("&k", ChatColor.MAGIC.toString());
+		if (output.contains("&l"))
+			output = output.replace("&l", ChatColor.BOLD.toString());
+		if (output.contains("&n"))
+			output = output.replace("&n", ChatColor.UNDERLINE.toString());
+		if (output.contains("&o"))
+			output = output.replace("&o", ChatColor.ITALIC.toString());
+		if (output.contains("&m"))
+			output = output.replace("&m", ChatColor.STRIKETHROUGH.toString());
+		
 		return output;
 	}
 
