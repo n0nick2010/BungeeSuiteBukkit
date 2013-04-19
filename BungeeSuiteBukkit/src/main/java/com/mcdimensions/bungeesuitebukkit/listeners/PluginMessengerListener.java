@@ -44,7 +44,15 @@ public class PluginMessengerListener implements PluginMessageListener {
 			String name = null;
 			String type = null;
 			String dest = null;
-
+			try {
+				if(!plugin.utils.serverExists(Bukkit.getServerName())){
+					player.sendMessage(ChatColor.RED + "This server does not exist. Make sure your server.properties server-name is the same as your BungeeCord config.");
+					return;
+				}
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
 			try {
 				player = Bukkit.getPlayer(in.readUTF());
 				name = in.readUTF();
@@ -125,6 +133,10 @@ public class PluginMessengerListener implements PluginMessageListener {
 				}
 			
 				visible = in.readBoolean();
+				if(!plugin.utils.serverExists(Bukkit.getServerName())){
+					player.sendMessage(ChatColor.RED + "This does not exist. Make sure your server.properties server-name is the same as your BungeeCord config.");
+					return;
+				}
 				plugin.utils.createWarp(name, player.getLocation(), visible);
 			} catch (SQLException e) {
 				e.printStackTrace();
