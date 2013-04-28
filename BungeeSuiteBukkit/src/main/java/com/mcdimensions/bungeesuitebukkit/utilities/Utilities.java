@@ -280,7 +280,7 @@ public class Utilities {
 
 	public Portal getPortalByPosition(Location l, double offset) {
 		for (Portal p : plugin.getPortals()) {
-			if (p.containsLocation(l, offset) && p.isActive())
+			if (p.isActive() && p.containsLocation(l, offset))
 				return p;
 		}
 		return null;
