@@ -68,7 +68,7 @@ public class Portal {
 	
 
 	public boolean isIn(Location l) {
-		return this.containsLocation(l, 0);
+		return portal.isIn(l);
 	}
 
 	public void setActive(boolean active) {

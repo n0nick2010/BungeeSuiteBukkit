@@ -18,8 +18,10 @@ import org.bukkit.plugin.java.JavaPlugin;
 import com.mcdimensions.bungeesuitebukkit.database.Database;
 import com.mcdimensions.bungeesuitebukkit.database.DatabaseDependencyException;
 import com.mcdimensions.bungeesuitebukkit.listeners.PluginMessengerListener;
+import com.mcdimensions.bungeesuitebukkit.listeners.PortalLiquidListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.PortalListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.PlayerConnect;
+import com.mcdimensions.bungeesuitebukkit.listeners.PortalPhysicsProtectionListner;
 import com.mcdimensions.bungeesuitebukkit.listeners.SignListener;
 import com.mcdimensions.bungeesuitebukkit.listeners.VaultListener;
 import com.mcdimensions.bungeesuitebukkit.portals.Portal;
@@ -37,7 +39,8 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 	
 	public String motd, OnDisableTarget;
 	public Boolean dynamicMOTD, showPlayers, usingSigns, usingPortals,
-			portalRegionSelectionMessage, usingWarps, usingVault;
+			portalRegionSelectionMessage, portalLiquidMove, portalPhysics,
+			usingWarps, usingVault;
 	public Database database;
 	
 	public ConsoleCommandSender log;
@@ -109,6 +112,12 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 					rsm = new RegionSelectionManager(this), this);
 			getServer().getPluginManager().registerEvents(
 					new PortalListener(this), this);
+			
+			if (portalLiquidMove)
+				getServer().getPluginManager().registerEvents(new PortalLiquidListener(this), this);
+			
+			if (portalPhysics)
+				getServer().getPluginManager().registerEvents(new PortalPhysicsProtectionListner(this), this);
 		}
 		if(usingVault){
 			getServer().getPluginManager().registerEvents(
@@ -167,6 +176,8 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		config.addDefault("Warps.OnDisableTarget", "none");
 		config.addDefault("Portals.Enabled", true);
 		config.addDefault("Portals.AlertOnRegionSelection", true);
+		config.addDefault("Portals.PreventLiquidMove", true);
+		config.addDefault("Portals.PreventBlockPhysics", true);
 		config.addDefault("Chat.SendVaultInfo", true);
 		config.addDefault("Chat.UseGroupPrefixesAndSuffixes", true);
 		config.options().copyDefaults(true);
@@ -191,6 +202,8 @@ public class BungeeSuiteBukkit extends JavaPlugin {
 		
 		this.usingPortals = config.getBoolean("Portals.Enabled");
 		this.portalRegionSelectionMessage = config.getBoolean("Portals.AlertOnRegionSelection");
+		this.portalLiquidMove = config.getBoolean("Portals.PreventLiquidMove");
+		this.portalPhysics = config.getBoolean("Portals.PreventBlockPhysics");
 		
 		this.usingVault = config.getBoolean("Chat.SendVaultInfo");
 	}
