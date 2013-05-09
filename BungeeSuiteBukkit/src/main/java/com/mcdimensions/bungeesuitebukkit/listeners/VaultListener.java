@@ -55,7 +55,7 @@ public class VaultListener implements Listener {
 		}
 		
 		new PluginMessageTask(this.plugin, event.getPlayer(), b).runTaskLater(
-				this.plugin, 5);
+				this.plugin, 20);
 	}
 
 }
